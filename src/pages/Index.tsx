@@ -114,14 +114,35 @@ const principles = [
   },
 ];
 
+const SEND_URL = "https://functions.poehali.dev/589729a4-9cdc-4434-a55a-a5bba5d57948";
+
 export default function Index() {
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setSendError("");
+    try {
+      const res = await fetch(SEND_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setSendError("Не удалось отправить заявку. Позвоните нам напрямую.");
+      }
+    } catch {
+      setSendError("Ошибка соединения. Позвоните нам напрямую.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const scrollTo = (id: string) => {
@@ -499,11 +520,15 @@ export default function Index() {
                       />
                       <button
                         type="submit"
-                        className="w-full font-ibm text-xs font-medium tracking-widest uppercase py-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-colors duration-300"
+                        disabled={sending}
+                        className="w-full font-ibm text-xs font-medium tracking-widest uppercase py-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        Отправить заявку
+                        {sending ? "Отправляем..." : "Отправить заявку"}
                       </button>
                     </div>
+                    {sendError && (
+                      <p className="font-ibm text-xs text-red-400 mt-2 px-1">{sendError}</p>
+                    )}
                   </div>
                   <p className="font-ibm text-xs text-[hsl(220,10%,35%)] mt-3 leading-relaxed">
                     Нажимая кнопку, вы соглашаетесь с обработкой персональных данных. Все сведения строго конфиденциальны.
