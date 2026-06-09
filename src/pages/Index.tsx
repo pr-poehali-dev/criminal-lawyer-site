@@ -1,87 +1,121 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/files/0257a6c6-d39a-42c3-b349-735c5b270258.jpg";
+const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/6c875499-c552-4a86-9973-d947dd28a225.jpg";
+const PHONE = "89025436378";
+const PHONE_DISPLAY = "+7 (902) 543-63-78";
+const EMAIL = "89025436378@mail.ru";
+const ADDRESS = "Красногвардейская улица, 23";
 
 const services = [
   {
-    icon: "Shield",
-    title: "Защита на следствии",
-    desc: "Сопровождение с момента задержания, защита прав на допросах, контроль законности следственных действий.",
+    icon: "Siren",
+    title: "Срочный выезд адвоката 24/7",
+    subtitle: "при задержании, обыске, допросе по Иркутску и области",
+    desc: "При проведении сотрудниками правоохранительных органов обыска, в случае задержания и доставления к следователю для допроса. Вы нуждаетесь в срочном выезде адвоката! Звоните 24/7",
+    urgent: true,
   },
   {
-    icon: "Scale",
-    title: "Защита в суде",
-    desc: "Разработка правовой позиции, подготовка ходатайств, участие в судебных заседаниях всех инстанций.",
+    icon: "Phone",
+    title: "Краткая юридическая консультация 24/7",
+    subtitle: "по телефону",
+    desc: "Когда сотрудники правоохранительных органов находятся у вашей двери для проведения обыска или задержания, пожалуйста, сохраняйте спокойствие и вежливость. Узнайте как действовать в сложившейся ситуации. Звоните 24/7",
+    urgent: true,
+  },
+  {
+    icon: "MessageSquare",
+    title: "Юридическая консультация",
+    subtitle: "на личном приёме в офисе",
+    desc: "Когда есть время, но уже необходимо определиться с позицией защиты. Получите консультацию по обстоятельствам Вашего уголовного дела.",
+    urgent: false,
   },
   {
     icon: "FileSearch",
-    title: "Обжалование приговоров",
-    desc: "Апелляция, кассация, надзор. Анализ судебных ошибок, подготовка жалоб и новых доказательств.",
+    title: "Юридическая консультация",
+    subtitle: "с изучением материалов уголовного дела",
+    desc: "Когда ваш процессуальный статус по уголовному делу определён, но остались сомнения в избранной позиции защиты. Получите консультацию по результатам изучения уголовного дела.",
+    urgent: false,
+  },
+  {
+    icon: "Scale",
+    title: "Участие адвоката",
+    subtitle: "в одном следственном действии",
+    desc: "В случаях, когда участие адвоката требуется только один раз (для допроса или дачи объяснений). Соглашение с адвокатом заключается для участия в конкретном следственном действии.",
+    urgent: false,
+  },
+  {
+    icon: "Shield",
+    title: "Защита подозреваемого (обвиняемого)",
+    subtitle: "по уголовному делу",
+    desc: "Когда защита требуется на этапах проверки, расследования либо рассмотрения уголовного дела судом по существу. Соглашение с доверителем заключается на конкретный этап либо период времени.",
+    urgent: false,
   },
   {
     icon: "UserCheck",
-    title: "Реабилитация",
-    desc: "Прекращение уголовного преследования, возмещение ущерба, восстановление деловой репутации.",
+    title: "Представление интересов свидетеля",
+    subtitle: "по уголовному делу",
+    desc: "Приму меры, чтобы свидетель не перешёл в статус обвиняемого. Соглашение заключается на период расследования либо рассмотрения уголовного дела судом.",
+    urgent: false,
   },
+  {
+    icon: "ClipboardList",
+    title: "Полное сопровождение жалоб",
+    subtitle: "на незаконные действия (бездействие) следствия и дознания",
+    desc: "Недостаточно просто составить и подать жалобу на незаконные действия или бездействие должностных лиц. Приму меры к принятию законного и обоснованного решения по всем доводам жалобы.",
+    urgent: false,
+  },
+  {
+    icon: "HeartHandshake",
+    title: "Представление интересов потерпевшего",
+    subtitle: "по уголовному делу",
+    desc: "Приму меры, чтобы потерпевший взыскал материальный и моральный вред с виновной стороны. Соглашение заключается на период расследования либо рассмотрения уголовного дела судом.",
+    urgent: false,
+  },
+];
+
+const experiencePoints = [
   {
     icon: "BookOpen",
-    title: "Правовой анализ",
-    desc: "Оценка перспектив дела, правовая экспертиза документов, консультации по уголовному праву.",
+    title: "18 лет юридической практики",
+    desc: "Досконально изучил уголовный процесс с обеих сторон: как со стороны следствия, так и со стороны защиты.",
   },
   {
-    icon: "Lock",
-    title: "Меры пресечения",
-    desc: "Изменение меры пресечения, освобождение из-под стражи, домашний арест, залог.",
+    icon: "Trophy",
+    title: "Достижение результата",
+    desc: "Добиваюсь прекращения уголовного преследования, переквалификации обвинения на более мягкие статьи и назначения наказаний, не связанных с лишением свободы.",
+  },
+  {
+    icon: "Search",
+    title: "Работа на упреждение",
+    desc: "Анализирую материалы дела, нахожу процессуальные нарушения следователей и использую их для развала обвинения.",
+  },
+  {
+    icon: "Eye",
+    title: "Контроль рисков",
+    desc: "Сопровождаю клиентов на допросах, очных ставках и обысках. Исключаю любое психологическое давление со стороны правоохранительных органов.",
   },
 ];
 
-const stats = [
-  { value: "18+", label: "лет практики" },
-  { value: "340+", label: "дел завершено" },
-  { value: "87%", label: "оправдательных приговоров" },
-  { value: "1200+", label: "консультаций" },
-];
-
-const experience = [
+const principles = [
   {
-    year: "2006",
-    title: "Начало адвокатской практики",
-    desc: "Принятие в адвокатскую палату. Специализация на уголовных делах в сфере экономики.",
+    icon: "MessageCircle",
+    title: "Честный прогноз",
+    desc: "Не даю ложных обещаний ради гонорара. Говорю правду о рисках и перспективах дела на первой встрече.",
   },
   {
-    year: "2010",
-    title: "Первый крупный прецедент",
-    desc: "Успешная защита по делу с предъявленным обвинением в особо тяжком преступлении. Оправдательный приговор.",
+    icon: "ShieldAlert",
+    title: "Защита от давления",
+    desc: "Лично сопровождаю на допросах и обысках. Пресекаю любые незаконные действия следователей.",
   },
   {
-    year: "2015",
-    title: "Расширение практики",
-    desc: "Формирование команды, ведение дел в Верховном суде РФ, международная арбитражная практика.",
+    icon: "Crosshair",
+    title: "Работа на упреждение",
+    desc: "Нахожу процессуальные зацепки и выстраиваю жёсткую тактику защиты ещё до того, как дело дойдёт до суда.",
   },
-  {
-    year: "2020",
-    title: "Признание в профессиональном сообществе",
-    desc: "Включён в рейтинг лучших адвокатов по уголовным делам. Преподавательская деятельность.",
-  },
-];
-
-const caseTypes = [
-  "Уголовные дела общеуголовного характера",
-  "Экономические преступления",
-  "Коррупционные дела",
-  "Преступления против личности",
-  "Налоговые преступления",
-  "Другое",
 ];
 
 export default function Index() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    caseType: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -95,142 +129,125 @@ export default function Index() {
     setMenuOpen(false);
   };
 
+  const callPhone = () => {
+    window.location.href = `tel:${PHONE}`;
+  };
+
   return (
     <div className="min-h-screen bg-[hsl(220,15%,7%)] text-[hsl(45,20%,92%)]">
 
       {/* ─── NAVIGATION ─── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[hsl(220,12%,14%)] bg-[hsl(220,15%,7%)/95] backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[hsl(220,12%,13%)] bg-[hsl(220,15%,7%)] bg-opacity-95 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-5 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
             <div className="flex items-center gap-3">
               <div className="w-6 h-6 border border-[hsl(43,65%,52%)] flex items-center justify-center">
                 <div className="w-2 h-2 bg-[hsl(43,65%,52%)]" />
               </div>
-              <span className="font-cormorant text-base font-semibold tracking-widest uppercase text-[hsl(45,20%,92%)]">
-                Адвокат
+              <span className="font-cormorant text-sm font-semibold tracking-widest uppercase">
+                Адвокат по уголовным делам
               </span>
             </div>
 
-            {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-8">
-              {[
-                ["hero", "Главная"],
-                ["services", "Услуги"],
-                ["experience", "Опыт"],
-                ["about", "О мне"],
-                ["contact", "Консультация"],
-              ].map(([id, label]) => (
-                <button
-                  key={id}
-                  onClick={() => scrollTo(id)}
-                  className="nav-link"
-                >
-                  {label}
-                </button>
+            <div className="hidden md:flex items-center gap-7">
+              {[["hero","Главная"],["services","Услуги"],["experience","Опыт"],["about","О мне"],["contact","Консультация"]].map(([id, label]) => (
+                <button key={id} onClick={() => scrollTo(id)} className="nav-link">{label}</button>
               ))}
             </div>
 
-            {/* CTA */}
-            <button
-              onClick={() => scrollTo("contact")}
-              className="hidden md:block font-ibm text-xs font-medium tracking-widest uppercase px-5 py-2.5 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-colors duration-300"
+            <a
+              href={`tel:${PHONE}`}
+              className="hidden md:flex items-center gap-2 font-ibm text-xs font-medium tracking-wider uppercase px-5 py-2.5 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-colors duration-300"
             >
-              Записаться
-            </button>
+              <Icon name="Phone" size={13} />
+              Позвонить
+            </a>
 
-            {/* Mobile burger */}
-            <button
-              className="md:hidden text-[hsl(220,10%,60%)] hover:text-[hsl(43,65%,52%)] transition-colors"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
+            <button className="md:hidden text-[hsl(220,10%,60%)] hover:text-[hsl(43,65%,52%)] transition-colors" onClick={() => setMenuOpen(!menuOpen)}>
               <Icon name={menuOpen ? "X" : "Menu"} size={20} />
             </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden border-t border-[hsl(220,12%,14%)] bg-[hsl(220,14%,9%)] px-6 py-4 flex flex-col gap-4">
-            {[
-              ["hero", "Главная"],
-              ["services", "Услуги"],
-              ["experience", "Опыт"],
-              ["about", "О мне"],
-              ["contact", "Консультация"],
-            ].map(([id, label]) => (
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                className="text-left font-ibm text-xs font-medium tracking-widest uppercase text-[hsl(220,10%,60%)] hover:text-[hsl(43,65%,52%)] transition-colors py-1"
-              >
+          <div className="md:hidden border-t border-[hsl(220,12%,13%)] bg-[hsl(220,14%,9%)] px-5 py-4 flex flex-col gap-4">
+            {[["hero","Главная"],["services","Услуги"],["experience","Опыт"],["about","О мне"],["contact","Консультация"]].map(([id, label]) => (
+              <button key={id} onClick={() => scrollTo(id)} className="text-left font-ibm text-xs font-medium tracking-widest uppercase text-[hsl(220,10%,60%)] hover:text-[hsl(43,65%,52%)] transition-colors py-1">
                 {label}
               </button>
             ))}
+            <a href={`tel:${PHONE}`} className="flex items-center gap-2 font-ibm text-xs font-medium tracking-wider uppercase py-2.5 px-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] w-fit mt-1">
+              <Icon name="Phone" size={13} />
+              {PHONE_DISPLAY}
+            </a>
           </div>
         )}
       </nav>
 
       {/* ─── HERO ─── */}
       <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-16">
-        {/* Background */}
         <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-            style={{ backgroundImage: `url(${LAWYER_PHOTO})` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,15%,7%)] via-[hsl(220,15%,7%)/85] to-[hsl(220,15%,7%)/40]" />
+          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25" style={{ backgroundImage: `url(${LAWYER_PHOTO})` }} />
+          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,15%,6%)] via-[rgba(13,15,20,0.88)] to-[rgba(13,15,20,0.5)]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,15%,7%)] via-transparent to-transparent" />
         </div>
+        <div className="absolute left-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-[hsl(43,65%,52%)] to-transparent opacity-30 hidden lg:block" />
 
-        {/* Vertical gold line decoration */}
-        <div className="absolute left-0 top-1/4 bottom-1/4 w-[1px] bg-gradient-to-b from-transparent via-[hsl(43,65%,52%)/40] to-transparent hidden lg:block" />
-
-        <div className="relative max-w-6xl mx-auto px-6 lg:px-8 w-full">
+        <div className="relative max-w-6xl mx-auto px-5 lg:px-8 w-full py-20">
           <div className="max-w-2xl">
-            <span className="animate-fade-in-up delay-100 inline-block font-ibm text-xs font-medium tracking-[0.2em] uppercase text-[hsl(43,65%,52%)] mb-6">
-              Адвокат по уголовным делам
+            <span className="animate-fade-in-up delay-100 inline-block font-ibm text-xs font-medium tracking-[0.22em] uppercase text-[hsl(43,65%,52%)] mb-6">
+              Адвокат по уголовным делам · Иркутск
             </span>
             <h1 className="animate-fade-in-up delay-200 font-cormorant text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.05] mb-6">
-              Александр<br />
-              <span className="font-semibold italic">Михайлов</span>
+              Профессиональная<br />
+              <span className="font-semibold italic">защита</span>
             </h1>
-            <div className="animate-fade-in-up delay-300 w-12 h-[2px] bg-[hsl(43,65%,52%)] mb-6" />
+            <div className="animate-fade-in-up delay-300 w-12 h-[2px] bg-[hsl(43,65%,52%)] mb-7" />
+            <p className="animate-fade-in-up delay-400 font-ibm text-base font-light text-[hsl(220,10%,65%)] leading-relaxed mb-3 max-w-lg">
+              Профессиональная защита в уголовном процессе.
+            </p>
+            <p className="animate-fade-in-up delay-400 font-ibm text-base font-light text-[hsl(220,10%,65%)] leading-relaxed mb-3 max-w-lg">
+              20 лет опыта <span className="text-[hsl(43,65%,52%)]">изнутри правоохранительной системы.</span>
+            </p>
             <p className="animate-fade-in-up delay-400 font-ibm text-base font-light text-[hsl(220,10%,65%)] leading-relaxed mb-10 max-w-lg">
-              Профессиональная защита в уголовном процессе. Более 18 лет практики,
-              340 завершённых дел, реальный результат для каждого клиента.
+              Реальный результат для каждого клиента.
             </p>
             <div className="animate-fade-in-up delay-500 flex flex-col sm:flex-row gap-4">
+              <a
+                href={`tel:${PHONE}`}
+                className="flex items-center justify-center gap-2.5 font-ibm text-xs font-medium tracking-widest uppercase px-8 py-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+              >
+                <Icon name="Phone" size={14} />
+                Позвонить сейчас
+              </a>
               <button
                 onClick={() => scrollTo("contact")}
-                className="font-ibm text-xs font-medium tracking-widest uppercase px-8 py-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+                className="font-ibm text-xs font-medium tracking-widest uppercase px-8 py-4 border border-[hsl(220,12%,28%)] text-[hsl(220,10%,65%)] hover:border-[hsl(43,65%,52%)] hover:text-[hsl(45,20%,92%)] transition-all duration-300"
               >
-                Получить консультацию
-              </button>
-              <button
-                onClick={() => scrollTo("services")}
-                className="font-ibm text-xs font-medium tracking-widest uppercase px-8 py-4 border border-[hsl(220,12%,28%)] text-[hsl(220,10%,65%)] hover:border-[hsl(43,65%,52%)/50] hover:text-[hsl(45,20%,92%)] transition-all duration-300"
-              >
-                Узнать об услугах
+                Записаться на приём
               </button>
             </div>
           </div>
         </div>
 
-        {/* Stats strip */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-[hsl(220,12%,14%)] bg-[hsl(220,14%,9%)/80] backdrop-blur-sm">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[hsl(220,12%,18%)]">
-              {stats.map((s, i) => (
-                <div key={i} className="px-6 py-5 text-center">
-                  <div className="font-cormorant text-2xl lg:text-3xl font-semibold text-[hsl(43,65%,52%)]">
-                    {s.value}
-                  </div>
-                  <div className="font-ibm text-xs text-[hsl(220,10%,50%)] mt-0.5 tracking-wide">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
+        {/* Urgent 24/7 badge */}
+        <div className="absolute bottom-0 left-0 right-0 border-t border-[hsl(220,12%,13%)] bg-[hsl(220,14%,9%)] bg-opacity-90 backdrop-blur-sm">
+          <div className="max-w-6xl mx-auto px-5 lg:px-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-[hsl(43,65%,52%)] animate-pulse" />
+                <span className="font-ibm text-xs font-medium tracking-wide text-[hsl(220,10%,60%)] uppercase">
+                  Экстренная юридическая помощь
+                </span>
+                <span className="font-ibm text-xs font-semibold tracking-wider text-[hsl(43,65%,52%)] uppercase">24/7</span>
+              </div>
+              <a
+                href={`tel:${PHONE}`}
+                className="flex items-center gap-2 font-cormorant text-lg font-semibold text-[hsl(45,20%,92%)] hover:text-[hsl(43,65%,52%)] transition-colors"
+              >
+                <Icon name="Phone" size={16} className="text-[hsl(43,65%,52%)]" />
+                {PHONE_DISPLAY}
+              </a>
             </div>
           </div>
         </div>
@@ -238,29 +255,44 @@ export default function Index() {
 
       {/* ─── SERVICES ─── */}
       <section id="services" className="py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 lg:px-8">
           <div className="mb-16">
-            <span className="font-ibm text-xs font-medium tracking-[0.2em] uppercase text-[hsl(43,65%,52%)] block mb-4">
+            <span className="font-ibm text-xs font-medium tracking-[0.22em] uppercase text-[hsl(43,65%,52%)] block mb-4">
               Направления работы
             </span>
-            <h2 className="font-cormorant text-4xl lg:text-5xl font-light mb-4">
-              Услуги
-            </h2>
+            <h2 className="font-cormorant text-4xl lg:text-5xl font-light mb-4">Услуги</h2>
             <div className="w-12 h-[2px] bg-[hsl(43,65%,52%)]" />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[hsl(220,12%,14%)]">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[hsl(220,12%,13%)]">
             {services.map((s, i) => (
-              <div key={i} className="service-card p-8 bg-[hsl(220,14%,10%)] group">
-                <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center mb-6 group-hover:border-[hsl(43,65%,52%)/50] transition-colors duration-300">
-                  <Icon name={s.icon} fallback="Shield" size={18} className="text-[hsl(43,65%,52%)]" />
+              <div key={i} className="service-card p-7 bg-[hsl(220,14%,10%)] group flex flex-col">
+                <div className="flex items-start justify-between mb-5">
+                  <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center group-hover:border-[hsl(43,65%,52%)] transition-colors duration-300 shrink-0">
+                    <Icon name={s.icon} fallback="Shield" size={17} className="text-[hsl(43,65%,52%)]" />
+                  </div>
+                  {s.urgent && (
+                    <span className="font-ibm text-[10px] font-semibold tracking-widest uppercase px-2 py-1 border border-[hsl(43,65%,52%)/50] text-[hsl(43,65%,52%)] bg-[hsl(43,65%,52%)/8]">
+                      24/7
+                    </span>
+                  )}
                 </div>
-                <h3 className="font-cormorant text-xl font-semibold mb-3 text-[hsl(45,20%,92%)]">
+                <h3 className="font-cormorant text-lg font-semibold text-[hsl(45,20%,92%)] leading-tight mb-1">
                   {s.title}
                 </h3>
-                <p className="font-ibm text-sm font-light text-[hsl(220,10%,55%)] leading-relaxed">
+                <p className="font-ibm text-xs font-medium text-[hsl(43,65%,52%)] mb-3 leading-snug">
+                  {s.subtitle}
+                </p>
+                <p className="font-ibm text-sm font-light text-[hsl(220,10%,52%)] leading-relaxed flex-1 mb-5">
                   {s.desc}
                 </p>
+                <a
+                  href={`tel:${PHONE}`}
+                  className="flex items-center gap-2 font-ibm text-xs font-medium tracking-wider uppercase text-[hsl(220,10%,50%)] hover:text-[hsl(43,65%,52%)] transition-colors duration-300 mt-auto"
+                >
+                  <Icon name="Phone" size={13} />
+                  Позвонить
+                </a>
               </div>
             ))}
           </div>
@@ -269,126 +301,120 @@ export default function Index() {
 
       {/* ─── EXPERIENCE ─── */}
       <section id="experience" className="py-24 lg:py-32 bg-[hsl(220,14%,9%)]">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 lg:px-8">
           <div className="mb-16">
-            <span className="font-ibm text-xs font-medium tracking-[0.2em] uppercase text-[hsl(43,65%,52%)] block mb-4">
-              18 лет в профессии
+            <span className="font-ibm text-xs font-medium tracking-[0.22em] uppercase text-[hsl(43,65%,52%)] block mb-4">
+              Адвокат по уголовным делам / Ведущий юрист
             </span>
-            <h2 className="font-cormorant text-4xl lg:text-5xl font-light mb-4">
-              Опыт и достижения
-            </h2>
+            <h2 className="font-cormorant text-4xl lg:text-5xl font-light mb-4">Опыт и достижения</h2>
             <div className="w-12 h-[2px] bg-[hsl(43,65%,52%)]" />
           </div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-[100px] top-0 bottom-0 w-[1px] bg-[hsl(220,12%,18%)] hidden md:block" />
-
-            <div className="space-y-0">
-              {experience.map((item, i) => (
-                <div key={i} className="relative flex gap-0 md:gap-12 group">
-                  {/* Year */}
-                  <div className="hidden md:flex items-start pt-8 w-[100px] shrink-0 justify-end pr-6">
-                    <span className="font-cormorant text-2xl font-light text-[hsl(43,65%,52%)/60] group-hover:text-[hsl(43,65%,52%)] transition-colors duration-300">
-                      {item.year}
-                    </span>
-                  </div>
-
-                  {/* Dot */}
-                  <div className="hidden md:flex items-start pt-10 shrink-0">
-                    <div className="w-3 h-3 border border-[hsl(220,12%,28%)] bg-[hsl(220,14%,9%)] group-hover:border-[hsl(43,65%,52%)] group-hover:bg-[hsl(43,65%,52%)/20] transition-all duration-300 -ml-[6px]" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 py-8 border-b border-[hsl(220,12%,14%)]">
-                    <div className="md:hidden font-cormorant text-lg text-[hsl(43,65%,52%)] mb-2">{item.year}</div>
-                    <h3 className="font-cormorant text-2xl font-semibold mb-2 text-[hsl(45,20%,92%)]">
-                      {item.title}
-                    </h3>
-                    <p className="font-ibm text-sm font-light text-[hsl(220,10%,55%)] leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
+          <div className="grid sm:grid-cols-2 gap-px bg-[hsl(220,12%,13%)]">
+            {experiencePoints.map((item, i) => (
+              <div key={i} className="bg-[hsl(220,14%,10%)] p-8 group hover:bg-[hsl(220,14%,11%)] transition-colors duration-300">
+                <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center mb-5 group-hover:border-[hsl(43,65%,52%)] transition-colors duration-300">
+                  <Icon name={item.icon} fallback="Star" size={17} className="text-[hsl(43,65%,52%)]" />
                 </div>
-              ))}
-            </div>
+                <h3 className="font-cormorant text-xl font-semibold mb-3 text-[hsl(45,20%,92%)]">{item.title}</h3>
+                <p className="font-ibm text-sm font-light text-[hsl(220,10%,55%)] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── ABOUT ─── */}
       <section id="about" className="py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-6xl mx-auto px-5 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Photo */}
             <div className="relative">
               <div className="relative overflow-hidden">
                 <img
                   src={LAWYER_PHOTO}
-                  alt="Адвокат Александр Михайлов"
-                  className="w-full object-cover grayscale contrast-110"
-                  style={{ height: "560px", objectPosition: "center top" }}
+                  alt="Адвокат"
+                  className="w-full object-cover object-top"
+                  style={{ height: "580px" }}
                 />
-                {/* Gold frame accent */}
-                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)] pointer-events-none" />
-                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
               </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-6 -right-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] p-6 shadow-2xl hidden lg:block">
-                <div className="font-cormorant text-3xl font-bold leading-none">18</div>
+              <div className="absolute -bottom-5 -right-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] p-5 shadow-2xl hidden lg:block">
+                <div className="font-cormorant text-3xl font-bold leading-none">20</div>
                 <div className="font-ibm text-xs font-medium tracking-wide mt-1">лет практики</div>
               </div>
             </div>
 
             {/* Text */}
             <div>
-              <span className="font-ibm text-xs font-medium tracking-[0.2em] uppercase text-[hsl(43,65%,52%)] block mb-4">
+              <span className="font-ibm text-xs font-medium tracking-[0.22em] uppercase text-[hsl(43,65%,52%)] block mb-4">
                 Об адвокате
               </span>
               <h2 className="font-cormorant text-4xl lg:text-5xl font-light mb-6">
-                Александр<br />
-                <span className="font-semibold italic">Михайлов</span>
+                Профессиональная<br />
+                <span className="font-semibold italic">защита изнутри</span>
               </h2>
               <div className="w-12 h-[2px] bg-[hsl(43,65%,52%)] mb-8" />
 
-              <p className="font-ibm text-sm font-light text-[hsl(220,10%,62%)] leading-relaxed mb-6">
-                Адвокат по уголовным делам с 18-летним опытом. Специализируюсь на делах,
-                связанных с экономическими преступлениями, коррупцией и преступлениями
-                против личности. Защищал интересы клиентов во всех судебных инстанциях
-                Российской Федерации, включая Верховный суд.
-              </p>
-              <p className="font-ibm text-sm font-light text-[hsl(220,10%,62%)] leading-relaxed mb-10">
-                Каждое дело — это не просто юридический казус, это судьба человека.
-                Именно поэтому я лично веду каждое дело от начала до конца, без передачи
-                помощникам и без формального подхода.
-              </p>
-
-              <div className="space-y-3">
+              <div className="space-y-3 mb-6">
                 {[
-                  "Член Адвокатской палаты г. Москвы",
-                  "Кандидат юридических наук",
-                  "Преподаватель уголовного права",
-                  "Член Комиссии по защите прав адвокатов",
+                  "Адвокат по уголовным делам",
+                  "Выпускник Юридического института ИГУ",
+                  "Подполковник юстиции в отставке",
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className="w-1 h-1 bg-[hsl(43,65%,52%)] mt-2 shrink-0" />
-                    <span className="font-ibm text-sm font-light text-[hsl(220,10%,62%)]">{item}</span>
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-1 h-1 bg-[hsl(43,65%,52%)] shrink-0" />
+                    <span className="font-ibm text-sm font-light text-[hsl(220,10%,72%)]">{item}</span>
                   </div>
                 ))}
               </div>
+
+              <p className="font-ibm text-sm font-light text-[hsl(220,10%,60%)] leading-relaxed mb-4">
+                Много лет я руководил следствием и расследовал уголовные дела. Сегодня этот опыт работает на вашу защиту. Я знаю уголовный процесс изнутри, точно просчитываю шаги обвинения и нахожу скрытые ошибки в материалах дела, чтобы использовать их в вашу пользу.
+              </p>
+
+              <div className="border-l-2 border-[hsl(43,65%,52%)/40] pl-5 mb-8">
+                <p className="font-cormorant text-xl italic text-[hsl(45,20%,78%)] leading-relaxed">
+                  Не оставайтесь один на один с системой. Позвоните мне прямо сейчас — разберем вашу ситуацию и начнем действовать.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <h4 className="font-ibm text-xs font-medium tracking-[0.18em] uppercase text-[hsl(220,10%,45%)] mb-4">Принципы работы</h4>
+                {principles.map((p, i) => (
+                  <div key={i} className="flex items-start gap-4 p-4 border border-[hsl(220,12%,16%)] hover:border-[hsl(43,65%,52%)/35] transition-colors duration-300">
+                    <div className="w-8 h-8 border border-[hsl(220,12%,22%)] flex items-center justify-center shrink-0 mt-0.5">
+                      <Icon name={p.icon} fallback="Check" size={14} className="text-[hsl(43,65%,52%)]" />
+                    </div>
+                    <div>
+                      <div className="font-cormorant text-base font-semibold text-[hsl(45,20%,90%)] mb-1">{p.title}</div>
+                      <div className="font-ibm text-sm font-light text-[hsl(220,10%,55%)] leading-relaxed">{p.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href={`tel:${PHONE}`}
+                className="flex items-center justify-center gap-2.5 font-ibm text-xs font-medium tracking-widest uppercase px-8 py-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-all duration-300 w-full sm:w-auto"
+              >
+                <Icon name="Phone" size={14} />
+                Позвонить: {PHONE_DISPLAY}
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── CONTACT / FORM ─── */}
+      {/* ─── CONTACT ─── */}
       <section id="contact" className="py-24 lg:py-32 bg-[hsl(220,14%,9%)]">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-5 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
 
             {/* Left */}
             <div>
-              <span className="font-ibm text-xs font-medium tracking-[0.2em] uppercase text-[hsl(43,65%,52%)] block mb-4">
+              <span className="font-ibm text-xs font-medium tracking-[0.22em] uppercase text-[hsl(43,65%,52%)] block mb-4">
                 Первичная консультация
               </span>
               <h2 className="font-cormorant text-4xl lg:text-5xl font-light mb-6">
@@ -396,26 +422,33 @@ export default function Index() {
                 <span className="font-semibold italic">консультацию</span>
               </h2>
               <div className="w-12 h-[2px] bg-[hsl(43,65%,52%)] mb-8" />
-              <p className="font-ibm text-sm font-light text-[hsl(220,10%,60%)] leading-relaxed mb-10">
-                Первичная консультация — это возможность оценить перспективы вашего дела
-                и выработать стратегию защиты. Конфиденциальность гарантирована.
+              <p className="font-ibm text-sm font-light text-[hsl(220,10%,58%)] leading-relaxed mb-10">
+                Первичная консультация — это возможность оценить перспективы вашего дела и выработать стратегию защиты. Конфиденциальность гарантирована.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-5 mb-10">
                 {[
-                  { icon: "Phone", label: "+7 (495) 000-00-00" },
-                  { icon: "Mail", label: "advokat@example.ru" },
-                  { icon: "MapPin", label: "Москва, ул. Арбат, 12, офис 301" },
-                  { icon: "Clock", label: "Пн–Пт: 9:00 – 20:00, Сб: 10:00 – 16:00" },
+                  { icon: "Phone", label: PHONE_DISPLAY, href: `tel:${PHONE}` },
+                  { icon: "Mail", label: EMAIL, href: `mailto:${EMAIL}` },
+                  { icon: "MapPin", label: ADDRESS, href: "#" },
+                  { icon: "Clock", label: "Доступен 24/7 для экстренных ситуаций", href: "#" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center shrink-0">
-                      <Icon name={item.icon} fallback="Phone" size={16} className="text-[hsl(43,65%,52%)]" />
+                  <a key={i} href={item.href} className="flex items-center gap-4 group">
+                    <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center shrink-0 group-hover:border-[hsl(43,65%,52%)] transition-colors duration-300">
+                      <Icon name={item.icon} fallback="Info" size={15} className="text-[hsl(43,65%,52%)]" />
                     </div>
-                    <span className="font-ibm text-sm font-light text-[hsl(220,10%,65%)]">{item.label}</span>
-                  </div>
+                    <span className="font-ibm text-sm font-light text-[hsl(220,10%,63%)] group-hover:text-[hsl(45,20%,88%)] transition-colors duration-300">{item.label}</span>
+                  </a>
                 ))}
               </div>
+
+              <a
+                href={`tel:${PHONE}`}
+                className="flex items-center justify-center gap-2.5 font-ibm text-xs font-medium tracking-widest uppercase px-8 py-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-all duration-300 w-full"
+              >
+                <Icon name="Phone" size={14} />
+                Позвонить сейчас — {PHONE_DISPLAY}
+              </a>
             </div>
 
             {/* Form */}
@@ -425,15 +458,22 @@ export default function Index() {
                   <div className="w-12 h-12 border border-[hsl(43,65%,52%)] flex items-center justify-center mx-auto mb-6">
                     <Icon name="Check" size={20} className="text-[hsl(43,65%,52%)]" />
                   </div>
-                  <h3 className="font-cormorant text-2xl font-semibold mb-3">Заявка отправлена</h3>
-                  <p className="font-ibm text-sm font-light text-[hsl(220,10%,55%)]">
-                    Мы свяжемся с вами в течение одного рабочего дня для согласования времени консультации.
+                  <h3 className="font-cormorant text-2xl font-semibold mb-3">Заявка принята</h3>
+                  <p className="font-ibm text-sm font-light text-[hsl(220,10%,55%)] mb-6">
+                    Свяжемся с вами в течение одного рабочего дня. Если ситуация срочная — звоните немедленно.
                   </p>
+                  <a href={`tel:${PHONE}`} className="flex items-center justify-center gap-2 font-ibm text-xs font-medium tracking-wider uppercase px-6 py-3 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)]">
+                    <Icon name="Phone" size={13} />
+                    {PHONE_DISPLAY}
+                  </a>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-0">
-                  <div className="grid sm:grid-cols-2 gap-px bg-[hsl(220,12%,18%)]">
-                    <div>
+                  <div className="bg-[hsl(220,14%,11%)] border border-[hsl(220,12%,17%)] p-1">
+                    <div className="font-ibm text-xs font-medium tracking-[0.15em] uppercase text-[hsl(220,10%,40%)] px-4 pt-4 pb-2">
+                      Оставить заявку на консультацию
+                    </div>
+                    <div className="space-y-px">
                       <input
                         type="text"
                         placeholder="Ваше имя *"
@@ -442,50 +482,31 @@ export default function Index() {
                         required
                         className="form-input"
                       />
-                    </div>
-                    <div>
                       <input
                         type="tel"
-                        placeholder="Телефон *"
+                        placeholder="Телефон для связи *"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         required
                         className="form-input"
                       />
+                      <textarea
+                        placeholder="Кратко опишите ситуацию"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        rows={4}
+                        className="form-input resize-none"
+                      />
+                      <button
+                        type="submit"
+                        className="w-full font-ibm text-xs font-medium tracking-widest uppercase py-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-colors duration-300"
+                      >
+                        Отправить заявку
+                      </button>
                     </div>
                   </div>
-                  <div className="mt-px">
-                    <select
-                      value={formData.caseType}
-                      onChange={(e) => setFormData({ ...formData, caseType: e.target.value })}
-                      className="form-input appearance-none cursor-pointer"
-                    >
-                      <option value="" disabled>Тип дела</option>
-                      {caseTypes.map((t) => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="mt-px">
-                    <textarea
-                      placeholder="Кратко опишите ситуацию"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      rows={4}
-                      className="form-input resize-none"
-                    />
-                  </div>
-                  <div className="mt-px">
-                    <button
-                      type="submit"
-                      className="w-full font-ibm text-xs font-medium tracking-widest uppercase py-4 bg-[hsl(43,65%,52%)] text-[hsl(220,15%,7%)] hover:bg-[hsl(43,60%,60%)] transition-colors duration-300"
-                    >
-                      Записаться на консультацию
-                    </button>
-                  </div>
-                  <p className="font-ibm text-xs text-[hsl(220,10%,38%)] mt-3 leading-relaxed">
-                    Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
-                    Все сведения строго конфиденциальны.
+                  <p className="font-ibm text-xs text-[hsl(220,10%,35%)] mt-3 leading-relaxed">
+                    Нажимая кнопку, вы соглашаетесь с обработкой персональных данных. Все сведения строго конфиденциальны.
                   </p>
                 </form>
               )}
@@ -495,19 +516,19 @@ export default function Index() {
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="border-t border-[hsl(220,12%,14%)] py-8">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <footer className="border-t border-[hsl(220,12%,13%)] py-8">
+        <div className="max-w-6xl mx-auto px-5 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-5 h-5 border border-[hsl(43,65%,52%)] flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-[hsl(43,65%,52%)]" />
             </div>
-            <span className="font-cormorant text-sm tracking-widest uppercase text-[hsl(220,10%,50%)]">
-              Адвокат Михайлов
+            <span className="font-cormorant text-sm tracking-widest uppercase text-[hsl(220,10%,45%)]">
+              Адвокат по уголовным делам · Иркутск
             </span>
           </div>
-          <p className="font-ibm text-xs text-[hsl(220,10%,38%)]">
-            © 2024 Все права защищены. Адвокатское бюро.
-          </p>
+          <a href={`tel:${PHONE}`} className="font-ibm text-xs text-[hsl(220,10%,40%)] hover:text-[hsl(43,65%,52%)] transition-colors">
+            {PHONE_DISPLAY}
+          </a>
         </div>
       </footer>
 
