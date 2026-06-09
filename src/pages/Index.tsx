@@ -145,7 +145,7 @@ export default function Index() {
                 <div className="w-2 h-2 bg-[hsl(43,65%,52%)]" />
               </div>
               <span className="font-cormorant text-sm font-semibold tracking-widest uppercase">
-                Адвокат по уголовным делам
+                Маханов Денис Анатольевич
               </span>
             </div>
 
@@ -352,8 +352,8 @@ export default function Index() {
                 Об адвокате
               </span>
               <h2 className="font-cormorant text-4xl lg:text-5xl font-light mb-6">
-                Профессиональная<br />
-                <span className="font-semibold italic">защита изнутри</span>
+                Маханов Денис<br />
+                <span className="font-semibold italic">Анатольевич</span>
               </h2>
               <div className="w-12 h-[2px] bg-[hsl(43,65%,52%)] mb-8" />
 
@@ -523,7 +523,7 @@ export default function Index() {
               <div className="w-1.5 h-1.5 bg-[hsl(43,65%,52%)]" />
             </div>
             <span className="font-cormorant text-sm tracking-widest uppercase text-[hsl(220,10%,45%)]">
-              Адвокат по уголовным делам · Иркутск
+              Маханов Денис Анатольевич · Иркутск
             </span>
           </div>
           <a href={`tel:${PHONE}`} className="font-ibm text-xs text-[hsl(220,10%,40%)] hover:text-[hsl(43,65%,52%)] transition-colors">
