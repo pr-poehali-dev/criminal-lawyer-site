@@ -378,17 +378,27 @@ export default function Index() {
               </h2>
               <div className="w-12 h-[2px] bg-[hsl(43,65%,52%)] mb-8" />
 
-              <div className="space-y-3 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-[hsl(220,12%,13%)] mb-8">
                 {[
-                  "Адвокат по уголовным делам",
-                  "Выпускник Юридического института ИГУ",
-                  "Подполковник юстиции в отставке",
+                  { value: "20 лет", label: "юридической практики" },
+                  { value: "СК РФ", label: "Следственный комитет РФ" },
+                  { value: "ИГУ", label: "Юридический институт" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-1 h-1 bg-[hsl(43,65%,52%)] shrink-0" />
-                    <span className="font-ibm text-sm font-light text-[hsl(220,10%,72%)]">{item}</span>
+                  <div key={i} className="bg-[hsl(220,14%,10%)] px-5 py-4 text-center">
+                    <div className="font-cormorant text-2xl font-bold text-[hsl(43,65%,52%)] leading-none mb-1">{item.value}</div>
+                    <div className="font-ibm text-[11px] font-medium tracking-wide text-[hsl(220,10%,48%)] uppercase leading-snug">{item.label}</div>
                   </div>
                 ))}
+              </div>
+
+              <div className="bg-[hsl(220,14%,10%)] border border-[hsl(43,65%,52%)/25] px-6 py-4 mb-6 flex items-start gap-4">
+                <div className="w-8 h-8 border border-[hsl(43,65%,52%)/50] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon name="Medal" fallback="Star" size={15} className="text-[hsl(43,65%,52%)]" />
+                </div>
+                <div>
+                  <div className="font-cormorant text-base font-semibold text-[hsl(45,20%,90%)] mb-0.5">Подполковник юстиции СК РФ в отставке</div>
+                  <div className="font-ibm text-xs font-light text-[hsl(220,10%,50%)] leading-relaxed">Выпускник Юридического института ИГУ · Адвокат по уголовным делам</div>
+                </div>
               </div>
 
               <p className="font-ibm text-sm font-light text-[hsl(220,10%,60%)] leading-relaxed mb-4">
