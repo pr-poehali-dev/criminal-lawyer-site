@@ -224,6 +224,16 @@ export default function Index() {
 
         <div className="relative z-10 max-w-6xl mx-auto px-5 lg:px-8 w-full py-20">
           <div className="max-w-2xl">
+            <div className="md:hidden mb-8 relative overflow-hidden max-w-xs">
+              <img
+                src={LAWYER_PHOTO}
+                alt="Маханов Денис Анатольевич"
+                className="w-full object-cover object-top"
+                style={{ height: "360px" }}
+              />
+              <div className="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
+              <div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
+            </div>
             <span className="animate-fade-in-up delay-100 inline-block font-ibm text-xs font-medium tracking-[0.22em] uppercase text-[hsl(43,65%,52%)] mb-6">
               Адвокат по уголовным делам · Иркутск
             </span>
