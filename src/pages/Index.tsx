@@ -2,7 +2,6 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/36482c87-fcd1-4b4b-9efa-bf1c7f995066.jpg";
-const LAWYER_PHOTO_FULL = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/36482c87-fcd1-4b4b-9efa-bf1c7f995066.jpg";
 const LAWYER_PHOTO_ABOUT = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/cd5c8c74-f228-4a85-9874-1d8ddd087d33.jpg";
 const PHONE = "89025436378";
 const PHONE_DISPLAY = "+7 (902) 543-63-78";
@@ -340,20 +339,8 @@ export default function Index() {
             <div className="w-12 h-[2px] bg-[hsl(43,65%,52%)]" />
           </div>
 
-          <div className="grid lg:grid-cols-[380px_1fr] gap-10 items-start">
-            <div className="relative hidden lg:block">
-              <div className="relative overflow-hidden">
-                <img
-                  src={LAWYER_PHOTO_FULL}
-                  alt="Маханов Денис Анатольевич"
-                  className="w-full h-auto object-contain"
-                />
-                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
-                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
-              </div>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-px bg-[hsl(220,12%,13%)]">
+          <div className="grid gap-10 items-start">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[hsl(220,12%,13%)]">
             {experiencePoints.map((item, i) => (
               <div key={i} className="bg-[hsl(220,14%,10%)] p-8 group hover:bg-[hsl(220,14%,11%)] transition-colors duration-300">
                 <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center mb-5 group-hover:border-[hsl(43,65%,52%)] transition-colors duration-300">
