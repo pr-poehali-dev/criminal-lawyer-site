@@ -3,6 +3,7 @@ import Icon from "@/components/ui/icon";
 
 const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/36482c87-fcd1-4b4b-9efa-bf1c7f995066.jpg";
 const LAWYER_PHOTO_FULL = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/36482c87-fcd1-4b4b-9efa-bf1c7f995066.jpg";
+const LAWYER_PHOTO_ABOUT = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/cd5c8c74-f228-4a85-9874-1d8ddd087d33.jpg";
 const PHONE = "89025436378";
 const PHONE_DISPLAY = "+7 (902) 543-63-78";
 const EMAIL = "89025436378@mail.ru";
@@ -373,12 +374,11 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Photo */}
             <div className="relative">
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden bg-[hsl(220,14%,9%)] flex items-center justify-center" style={{ height: "580px" }}>
                 <img
-                  src={LAWYER_PHOTO}
+                  src={LAWYER_PHOTO_ABOUT}
                   alt="Адвокат"
-                  className="w-full object-cover object-top"
-                  style={{ height: "580px" }}
+                  className="w-full h-full object-contain"
                 />
                 <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
                 <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
