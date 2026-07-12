@@ -215,9 +215,9 @@ export default function Index() {
         <img
           src={LAWYER_PHOTO}
           alt="Маханов Денис Анатольевич"
-          className="hidden lg:block absolute right-[-40px] xl:right-0 bottom-0 h-[92%] w-auto object-contain z-0"
+          className="hidden md:block absolute right-[-20px] lg:right-[-40px] xl:right-0 bottom-0 h-[85%] md:h-[80%] lg:h-[92%] w-auto object-contain z-0"
         />
-        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[45%] bg-gradient-to-l from-transparent via-[rgba(13,15,20,0.35)] to-[hsl(220,15%,6%)] z-0" />
+        <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[45%] bg-gradient-to-l from-transparent via-[rgba(13,15,20,0.35)] to-[hsl(220,15%,6%)] z-0" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-5 lg:px-8 w-full py-20">
           <div className="max-w-2xl">
@@ -475,7 +475,7 @@ export default function Index() {
                 Первичная консультация — это возможность оценить перспективы вашего дела и выработать стратегию защиты. Конфиденциальность гарантирована.
               </p>
 
-              <div className="relative overflow-hidden mb-10 hidden lg:block">
+              <div className="relative overflow-hidden mb-10 hidden md:block">
                 <img
                   src={LAWYER_PHOTO_CONTACT}
                   alt="Маханов Денис Анатольевич"
