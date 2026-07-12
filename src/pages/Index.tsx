@@ -3,6 +3,7 @@ import Icon from "@/components/ui/icon";
 
 const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/60b9dd7a-1e09-4240-a00f-bd7b742acae6.jpg";
 const LAWYER_PHOTO_FULL = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/32b98dd8-1d6b-4481-b92e-ab29cdcb080b.jpg";
+const LAWYER_PHOTO_CONTACT = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/359addc2-17e5-48b3-8d62-2da32cf39477.jpg";
 const PHONE = "89025436378";
 const PHONE_DISPLAY = "+7 (902) 543-63-78";
 const EMAIL = "89025436378@mail.ru";
@@ -208,14 +209,17 @@ export default function Index() {
 
       {/* ─── HERO ─── */}
       <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-16">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25" style={{ backgroundImage: `url(${LAWYER_PHOTO})` }} />
-          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,15%,6%)] via-[rgba(13,15,20,0.88)] to-[rgba(13,15,20,0.5)]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,15%,7%)] via-transparent to-transparent" />
-        </div>
+        <div className="absolute inset-0 bg-[hsl(220,15%,6%)]" />
         <div className="absolute left-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-[hsl(43,65%,52%)] to-transparent opacity-30 hidden lg:block" />
 
-        <div className="relative max-w-6xl mx-auto px-5 lg:px-8 w-full py-20">
+        <img
+          src={LAWYER_PHOTO}
+          alt="Маханов Денис Анатольевич"
+          className="hidden lg:block absolute right-[-40px] xl:right-0 bottom-0 h-[92%] w-auto object-contain z-0"
+        />
+        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[45%] bg-gradient-to-l from-transparent via-[rgba(13,15,20,0.35)] to-[hsl(220,15%,6%)] z-0" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-5 lg:px-8 w-full py-20">
           <div className="max-w-2xl">
             <span className="animate-fade-in-up delay-100 inline-block font-ibm text-xs font-medium tracking-[0.22em] uppercase text-[hsl(43,65%,52%)] mb-6">
               Адвокат по уголовным делам · Иркутск
@@ -470,6 +474,16 @@ export default function Index() {
               <p className="font-ibm text-sm font-light text-[hsl(220,10%,58%)] leading-relaxed mb-10">
                 Первичная консультация — это возможность оценить перспективы вашего дела и выработать стратегию защиты. Конфиденциальность гарантирована.
               </p>
+
+              <div className="relative overflow-hidden mb-10 hidden lg:block">
+                <img
+                  src={LAWYER_PHOTO_CONTACT}
+                  alt="Маханов Денис Анатольевич"
+                  className="w-full h-auto object-contain"
+                />
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
+              </div>
 
               <div className="space-y-5 mb-10">
                 {[
