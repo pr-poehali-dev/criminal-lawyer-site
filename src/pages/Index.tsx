@@ -3,7 +3,6 @@ import Icon from "@/components/ui/icon";
 
 const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/60b9dd7a-1e09-4240-a00f-bd7b742acae6.jpg";
 const LAWYER_PHOTO_FULL = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/32b98dd8-1d6b-4481-b92e-ab29cdcb080b.jpg";
-const LAWYER_PHOTO_CONTACT = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/359addc2-17e5-48b3-8d62-2da32cf39477.jpg";
 const PHONE = "89025436378";
 const PHONE_DISPLAY = "+7 (902) 543-63-78";
 const EMAIL = "89025436378@mail.ru";
@@ -474,16 +473,6 @@ export default function Index() {
               <p className="font-ibm text-sm font-light text-[hsl(220,10%,58%)] leading-relaxed mb-10">
                 Первичная консультация — это возможность оценить перспективы вашего дела и выработать стратегию защиты. Конфиденциальность гарантирована.
               </p>
-
-              <div className="relative overflow-hidden mb-10 hidden md:block">
-                <img
-                  src={LAWYER_PHOTO_CONTACT}
-                  alt="Маханов Денис Анатольевич"
-                  className="w-full h-auto object-contain"
-                />
-                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
-                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
-              </div>
 
               <div className="space-y-5 mb-10">
                 {[
