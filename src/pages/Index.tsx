@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/b61f30a8-b74e-4999-b859-9dcf5f6d0e7a.png";
-const LAWYER_PHOTO_FULL = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/4e616dc5-888b-41b8-a233-b2c56240ff15.jpg";
+const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/60b9dd7a-1e09-4240-a00f-bd7b742acae6.jpg";
+const LAWYER_PHOTO_FULL = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/32b98dd8-1d6b-4481-b92e-ab29cdcb080b.jpg";
 const PHONE = "89025436378";
 const PHONE_DISPLAY = "+7 (902) 543-63-78";
 const EMAIL = "89025436378@mail.ru";
