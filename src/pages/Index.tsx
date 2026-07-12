@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/6c875499-c552-4a86-9973-d947dd28a225.jpg";
+const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/b61f30a8-b74e-4999-b859-9dcf5f6d0e7a.png";
+const LAWYER_PHOTO_FULL = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/4e616dc5-888b-41b8-a233-b2c56240ff15.jpg";
 const PHONE = "89025436378";
 const PHONE_DISPLAY = "+7 (902) 543-63-78";
 const EMAIL = "89025436378@mail.ru";
@@ -331,7 +332,21 @@ export default function Index() {
             <div className="w-12 h-[2px] bg-[hsl(43,65%,52%)]" />
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-px bg-[hsl(220,12%,13%)]">
+          <div className="grid lg:grid-cols-[380px_1fr] gap-10 items-start">
+            <div className="relative hidden lg:block">
+              <div className="relative overflow-hidden">
+                <img
+                  src={LAWYER_PHOTO_FULL}
+                  alt="Маханов Денис Анатольевич"
+                  className="w-full object-cover"
+                  style={{ height: "620px" }}
+                />
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-px bg-[hsl(220,12%,13%)]">
             {experiencePoints.map((item, i) => (
               <div key={i} className="bg-[hsl(220,14%,10%)] p-8 group hover:bg-[hsl(220,14%,11%)] transition-colors duration-300">
                 <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center mb-5 group-hover:border-[hsl(43,65%,52%)] transition-colors duration-300">
@@ -341,6 +356,7 @@ export default function Index() {
                 <p className="font-ibm text-sm font-light text-[hsl(220,10%,55%)] leading-relaxed">{item.desc}</p>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </section>
