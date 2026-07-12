@@ -2,7 +2,7 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/e4bb7f63-014c-423e-b1e5-a7813c1d96f3.jpg";
-const LAWYER_PHOTO_ABOUT = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/d879cba7-d480-4b70-ad8d-e80d18e917cb.jpg";
+const LAWYER_PHOTO_ABOUT = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/46a27446-37b6-4939-b907-036748aa6735.jpg";
 const PHONE = "89025436378";
 const PHONE_DISPLAY = "+7 (902) 543-63-78";
 const EMAIL = "89025436378@mail.ru";
@@ -370,12 +370,12 @@ export default function Index() {
         <div className="max-w-6xl mx-auto px-5 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Photo */}
-            <div className="relative">
-              <div className="relative overflow-hidden bg-[hsl(220,14%,9%)] flex items-center justify-center" style={{ height: "580px" }}>
+            <div className="relative max-w-md mx-auto lg:max-w-none">
+              <div className="relative overflow-hidden">
                 <img
                   src={LAWYER_PHOTO_ABOUT}
                   alt="Адвокат"
-                  className="w-full h-full object-contain"
+                  className="w-full h-auto object-cover"
                 />
                 <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
                 <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
