@@ -261,7 +261,7 @@ export default function Index() {
               </a>
               <button
                 onClick={() => scrollTo("contact")}
-                className="font-ibm text-xs font-medium tracking-widest uppercase px-8 py-4 border border-[hsl(220,12%,28%)] text-[hsl(220,10%,65%)] hover:border-[hsl(43,65%,52%)] hover:text-[hsl(45,20%,92%)] transition-all duration-300"
+                className="w-full sm:w-auto text-center font-ibm text-xs font-medium tracking-widest uppercase px-8 py-4 border border-[hsl(220,12%,28%)] text-[hsl(220,10%,65%)] hover:border-[hsl(43,65%,52%)] hover:text-[hsl(45,20%,92%)] transition-all duration-300"
               >
                 Записаться на приём
               </button>
