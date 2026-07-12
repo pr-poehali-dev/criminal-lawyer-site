@@ -377,7 +377,8 @@ export default function Index() {
                 <img
                   src={LAWYER_PHOTO}
                   alt="Адвокат"
-                  className="w-full h-auto object-contain"
+                  className="w-full object-cover object-top"
+                  style={{ height: "580px" }}
                 />
                 <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[hsl(43,65%,52%)]" />
                 <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
