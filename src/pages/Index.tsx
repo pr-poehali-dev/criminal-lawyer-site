@@ -577,7 +577,7 @@ export default function Index() {
               <div className="w-1.5 h-1.5 bg-[hsl(43,65%,52%)]" />
             </div>
             <span className="font-cormorant text-sm tracking-widest uppercase text-[hsl(220,10%,45%)]">
-              Маханов Денис Анатольевич · Иркутск
+              Маханов Денис Анатольевич · Иркутск · Улан-Удэ
             </span>
           </div>
           <a href={`tel:${PHONE}`} className="font-ibm text-xs text-[hsl(220,10%,40%)] hover:text-[hsl(43,65%,52%)] transition-colors">
