@@ -249,7 +249,7 @@ export default function Index() {
               20 лет опыта <span className="text-[hsl(43,65%,52%)]">изнутри правоохранительной системы.</span>
             </p>
             <p className="animate-fade-in-up delay-400 font-ibm text-base font-light text-[hsl(220,10%,65%)] leading-relaxed mb-10 max-w-lg">
-              Гарантия максимально положительного результата для каждого клиента.
+              Максимально положительный результат в рамках закона – для каждого клиента.
             </p>
             <div className="animate-fade-in-up delay-500 flex flex-col sm:flex-row gap-4">
               <a
