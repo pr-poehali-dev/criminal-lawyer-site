@@ -235,7 +235,7 @@ export default function Index() {
               <div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-[hsl(43,65%,52%)]" />
             </div>
             <span className="animate-fade-in-up delay-100 inline-block font-ibm text-xs font-medium tracking-[0.22em] uppercase text-[hsl(43,65%,52%)] mb-6">
-              Адвокат по уголовным делам · Иркутск и Улан-Удэ
+              Адвокат по уголовным делам · Иркутск · Улан-Удэ
             </span>
             <h1 className="animate-fade-in-up delay-200 font-cormorant text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.05] mb-6">
               Профессиональная<br />
