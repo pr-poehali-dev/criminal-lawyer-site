@@ -32,9 +32,9 @@ def handler(event: dict, context) -> dict:
             'body': json.dumps({'error': 'Имя и телефон обязательны'}, ensure_ascii=False)
         }
 
-    smtp_password = os.environ.get('SMTP_PASSWORD', '')
-    from_email = '89025436378@mail.ru'
-    to_email = '89025436378@mail.ru'
+    smtp_password = os.environ.get('YANDEX_SMTP_PASSWORD', '')
+    from_email = 'mon1162pl@yandex.ru'
+    to_email = 'mon1162pl@yandex.ru'
 
     subject = f'Новая заявка на консультацию — {name}'
 
@@ -68,7 +68,7 @@ def handler(event: dict, context) -> dict:
     msg['To'] = to_email
     msg.attach(MIMEText(html_body, 'html', 'utf-8'))
 
-    with smtplib.SMTP_SSL('smtp.mail.ru', 465) as server:
+    with smtplib.SMTP_SSL('smtp.yandex.ru', 465) as server:
         server.login(from_email, smtp_password)
         server.sendmail(from_email, to_email, msg.as_string())
 
