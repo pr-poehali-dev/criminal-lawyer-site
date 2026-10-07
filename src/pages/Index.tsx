@@ -510,18 +510,20 @@ export default function Index() {
                     href={o.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 border border-[hsl(220,12%,17%)] bg-[hsl(220,14%,11%)] hover:border-[hsl(43,65%,52%)] transition-colors duration-300 group"
+                    className="block p-6 border border-[hsl(220,12%,17%)] bg-[hsl(220,14%,11%)] hover:border-[hsl(43,65%,52%)] transition-colors duration-300 group"
                   >
-                    <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center shrink-0 group-hover:border-[hsl(43,65%,52%)] transition-colors duration-300">
-                      <Icon name="MapPin" size={15} className="text-[hsl(43,65%,52%)]" />
+                    <div className="flex items-start gap-4 mb-5">
+                      <div className="w-12 h-12 border border-[hsl(220,12%,22%)] flex items-center justify-center shrink-0 group-hover:border-[hsl(43,65%,52%)] transition-colors duration-300">
+                        <Icon name="MapPin" size={20} className="text-[hsl(43,65%,52%)]" />
+                      </div>
+                      <div>
+                        <div className="font-cormorant text-2xl font-semibold text-[hsl(45,20%,92%)] leading-tight mb-1">{o.city}</div>
+                        <div className="font-ibm text-sm font-light text-[hsl(220,10%,63%)]">{o.address}</div>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <div className="font-cormorant text-lg font-semibold text-[hsl(45,20%,92%)] leading-tight">{o.city}</div>
-                      <div className="font-ibm text-xs font-light text-[hsl(220,10%,55%)]">{o.address}</div>
-                    </div>
-                    <span className="flex items-center gap-1.5 font-ibm text-[11px] font-medium tracking-wider uppercase text-[hsl(43,65%,52%)] shrink-0">
-                      <Icon name="Navigation" size={13} />
-                      Маршрут
+                    <span className="flex items-center justify-center gap-2 w-full py-3 bg-[hsl(43,65%,52%)] text-[hsl(220,16%,8%)] font-ibm text-xs font-medium tracking-[0.15em] uppercase group-hover:opacity-90 transition-opacity">
+                      <Icon name="Navigation" size={14} />
+                      Построить маршрут
                     </span>
                   </a>
                 ))}
