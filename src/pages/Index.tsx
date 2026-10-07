@@ -6,7 +6,18 @@ const LAWYER_PHOTO_ABOUT = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-
 const PHONE = "89025436378";
 const PHONE_DISPLAY = "+7 (902) 543-63-78";
 const EMAIL = "89025436378@mail.ru";
-const ADDRESS = "Красногвардейская улица, 23";
+const offices = [
+  {
+    city: "Иркутск",
+    address: "Красногвардейская улица, 23",
+    href: "https://2gis.ru/irkutsk/firm/70000001114979426?utm_source=widget_firm",
+  },
+  {
+    city: "Улан-Удэ",
+    address: "Открыть адрес и построить маршрут в 2ГИС",
+    href: "https://2gis.ru/ulanude/search/маханов/firm/70000001118173928/107.592326%2C51.824691?m=107.584519%2C51.835173%2F10.93&utm_source=widget_firm",
+  },
+];
 
 const services = [
   {
@@ -480,7 +491,6 @@ export default function Index() {
                 {[
                   { icon: "Phone", label: PHONE_DISPLAY, href: `tel:${PHONE}` },
                   { icon: "Mail", label: EMAIL, href: `mailto:${EMAIL}` },
-                  { icon: "MapPin", label: ADDRESS, href: "#" },
                   { icon: "Clock", label: "Доступен 24/7 для экстренных ситуаций", href: "#" },
                 ].map((item, i) => (
                   <a key={i} href={item.href} className="flex items-center gap-4 group">
@@ -488,6 +498,31 @@ export default function Index() {
                       <Icon name={item.icon} fallback="Info" size={15} className="text-[hsl(43,65%,52%)]" />
                     </div>
                     <span className="font-ibm text-sm font-light text-[hsl(220,10%,63%)] group-hover:text-[hsl(45,20%,88%)] transition-colors duration-300">{item.label}</span>
+                  </a>
+                ))}
+              </div>
+
+              <div className="space-y-3 mb-10">
+                <h4 className="font-ibm text-xs font-medium tracking-[0.18em] uppercase text-[hsl(220,10%,45%)]">Где нас найти</h4>
+                {offices.map((o, i) => (
+                  <a
+                    key={i}
+                    href={o.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 border border-[hsl(220,12%,17%)] bg-[hsl(220,14%,11%)] hover:border-[hsl(43,65%,52%)] transition-colors duration-300 group"
+                  >
+                    <div className="w-10 h-10 border border-[hsl(220,12%,22%)] flex items-center justify-center shrink-0 group-hover:border-[hsl(43,65%,52%)] transition-colors duration-300">
+                      <Icon name="MapPin" size={15} className="text-[hsl(43,65%,52%)]" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-cormorant text-lg font-semibold text-[hsl(45,20%,92%)] leading-tight">{o.city}</div>
+                      <div className="font-ibm text-xs font-light text-[hsl(220,10%,55%)]">{o.address}</div>
+                    </div>
+                    <span className="flex items-center gap-1.5 font-ibm text-[11px] font-medium tracking-wider uppercase text-[hsl(43,65%,52%)] shrink-0">
+                      <Icon name="Navigation" size={13} />
+                      Маршрут
+                    </span>
                   </a>
                 ))}
               </div>
