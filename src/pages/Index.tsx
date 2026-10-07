@@ -580,6 +580,13 @@ export default function Index() {
               Маханов Денис Анатольевич · Иркутск · Улан-Удэ
             </span>
           </div>
+          <iframe
+            title="Отзывы 2ГИС"
+            frameBorder="0"
+            width="150"
+            height="50"
+            src="https://widget.2gis.ru/api/widget?org_id=70000001114979425&branch_id=70000001114979426&size=medium&theme=dark"
+          />
           <a href={`tel:${PHONE}`} className="font-ibm text-xs text-[hsl(220,10%,40%)] hover:text-[hsl(43,65%,52%)] transition-colors">
             {PHONE_DISPLAY}
           </a>
