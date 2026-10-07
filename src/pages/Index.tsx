@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 
 const LAWYER_PHOTO = "https://cdn.poehali.dev/projects/c6d73db4-f6a3-4ef5-b23d-b3c725a8e023/bucket/e4bb7f63-014c-423e-b1e5-a7813c1d96f3.jpg";
@@ -135,6 +135,27 @@ export default function Index() {
   const [sendError, setSendError] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const sendGoal = (goal: string) => {
+      const ym = (window as unknown as { ym?: (...args: unknown[]) => void }).ym;
+      if (ym) ym(113530439, "reachGoal", goal);
+    };
+    const onClick = (e: MouseEvent) => {
+      const link = (e.target as HTMLElement).closest("a");
+      if (!link) return;
+      const href = link.getAttribute("href") || "";
+      if (href.startsWith("tel:")) {
+        sendGoal("call_click");
+      } else if (href.includes("2gis.ru/irkutsk")) {
+        sendGoal("route_irkutsk");
+      } else if (href.includes("2gis.ru/ulanude")) {
+        sendGoal("route_ulanude");
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
@@ -146,6 +167,8 @@ export default function Index() {
         body: JSON.stringify(formData),
       });
       if (res.ok) {
+        const ym = (window as unknown as { ym?: (...args: unknown[]) => void }).ym;
+        if (ym) ym(113530439, "reachGoal", "form_sent");
         setSubmitted(true);
       } else {
         setSendError("Не удалось отправить заявку. Позвоните нам напрямую.");
